@@ -7,3 +7,6 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
+
+# Local project directory shared with Vagrant VM
+.vagrant_data
