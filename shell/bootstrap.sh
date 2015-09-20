@@ -73,3 +73,22 @@ curl -sSL https://get.docker.com/ | sh
 
 # Means `sudo` doesn't have to be used every time docker is used
 sudo usermod -aG docker vagrant
+
+# HEROKU
+# ------
+
+# Install Heroku toolbelt
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+# RABBIMQ
+# -------
+
+# Add RabbitMQ's own APT repo to sources list, so the latest version can be installed
+echo "deb http://www.rabbitmq.com/debian/ testing main" | sudo tee -a /etc/apt/sources.list
+# Add RabbitMW's public key to APT so there's no unsigned key complains
+wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+sudo apt-key add rabbitmq-signing-key-public.asc
+
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+

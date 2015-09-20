@@ -11,6 +11,7 @@ Vagrant.configure(2) do |config|
   # --------------
   # Access "localhost:8080" from host to access port 80 on guest machine
   config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Use public or private network, depending on sensitivity of data
   # on your box
@@ -18,6 +19,8 @@ Vagrant.configure(2) do |config|
   # config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.synced_folder "vagrant_data", "/vagrant_data"
+
+  config.ssh.forward_agent = true
 
   # PROVIDER
   # --------
