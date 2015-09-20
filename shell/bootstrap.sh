@@ -50,10 +50,15 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
 
-sudo npm install --global npm@latest # update npm to latest version
+# Setup node paths to `sudo` isn't required when installing global NPM packages
+npm config set prefix '~/.npm-packages'
+export PATH="$PATH:$HOME/.npm-packages/bin"
+echo 'export PATH="$PATH:$HOME/.npm-packages/bin"' >> /home/vagrant/.bashrc
+
+npm install --global npm@latest # update npm to latest version
 
 # Common packages
-sudo npm install --global mocha
+npm install --global mocha
 
 # RUBY
 # ----
@@ -64,7 +69,7 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 # YEOMAN and GRUNT
 # ------
 
-sudo npm install --global yo bower grunt-cli
+npm install --global yo bower grunt-cli
 
 # DOCKER
 # ------
